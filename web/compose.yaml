@@ -1,0 +1,56 @@
+services:
+  web:
+    container_name: web
+    build: ./container/web
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    restart: unless-stopped
+    volumes:
+      - ./container/web/conf:/etc/caddy
+      # - ./site:/srv
+      - caddy_data:/data
+      - caddy_config:/config
+
+  front:
+    container_name: front
+    build: ./container/front
+    user: 1000:1000
+    working_dir: /home/node/front
+    volumes:
+      - ./src/front:/home/node/front
+    command: npx expo start --lan -p 3000
+    # command: tail -F /dev/null
+    init: true
+
+  back:
+    container_name: back
+    build: ./container/back
+    user: 1000:1000
+    working_dir: /home/ubuntu/back
+    volumes:
+      - ./src/back:/home/ubuntu/back
+    command: tail -F /dev/null
+    init: true
+    depends_on:
+      - db
+    environment:
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_NAME=app
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+
+  db:
+    container_name: db
+    build: ./container/db
+    restart: unless-stopped
+    environment:
+      - POSTGRES_DB=app
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+
+volumes:
+  caddy_data:
+  caddy_config:

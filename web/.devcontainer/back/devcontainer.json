@@ -1,0 +1,16 @@
+{
+	"name": "back",
+	"dockerComposeFile": "../../compose.yaml",
+	"service": "back",
+	"remoteUser": "ubuntu",
+	"workspaceFolder": "/home/ubuntu/back",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"vscjava.vscode-java-pack",
+				"vmware.vscode-boot-dev-pack",
+				"redhat.vscode-yaml"
+			]
+		}
+	}
+}

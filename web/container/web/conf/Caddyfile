@@ -1,0 +1,11 @@
+localhost:80 {
+	encode
+	
+	handle /api/* {
+		reverse_proxy back:8000
+	}
+
+	handle {
+		reverse_proxy front:3000
+	}
+}
