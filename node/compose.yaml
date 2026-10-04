@@ -1,10 +1,10 @@
 services:
-  node:
-    container_name: node
+  app:
+    container_name: app
     image: node:24
     user: 1000:1000
-    working_dir: /home/node/work
+    working_dir: /home/node/app
     volumes:
-      - ./src:/home/node/work
+      - ./app:/home/node/app
     command: tail -F /dev/null
     init: true
