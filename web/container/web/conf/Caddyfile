@@ -1,0 +1,10 @@
+dev.kotadev.com {
+	respond "hello world!"
+	# handle /api/* {
+	# 	reverse_proxy back:8080
+	# }
+
+	# handle {
+	# 	reverse_proxy front:3000
+	# }
+}

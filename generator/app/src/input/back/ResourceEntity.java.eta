@@ -1,0 +1,39 @@
+package com.app.domain.{{=props.singular}};
+
+import com.app.domain.{{=props.singular}}.dto.Create{{= props.pascalSingular }}Request;
+import com.app.domain.{{=props.singular}}.dto.Update{{= props.pascalSingular }}Request;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Table(name = "{{=props.singular}}")
+@Data
+@AllArgsConstructor
+@Builder
+@NoArgsConstructor
+public class {{= props.pascalSingular }}Entity {
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
+  @NotBlank
+  private String name;
+
+  public static {{= props.pascalSingular }}Entity create(Create{{= props.pascalSingular }}Request request) {
+    return {{= props.pascalSingular }}Entity.builder()
+        .name(request.getName())
+        .build();
+  }
+
+  public void update(Update{{= props.pascalSingular }}Request request) {
+    this.name = request.getName();
+  }
+}

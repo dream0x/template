@@ -1,0 +1,14 @@
+services:
+  web:
+    container_name: web
+    build: ./container/web
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    restart: unless-stopped
+    volumes:
+      - ./container/web/conf:/etc/caddy
+      # - ./site:/srv
+      # - caddy_data:/data
+      # - caddy_config:/config

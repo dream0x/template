@@ -1,0 +1,14 @@
+{
+	"name": "node",
+	"dockerComposeFile": "../compose.yaml",
+	"service": "node",
+	"remoteUser": "node",
+	"workspaceFolder": "/home/node/work",
+		"customizations": {
+		"vscode": {
+			"extensions": [
+				"biomejs.biome"
+			]
+		}
+	}
+}

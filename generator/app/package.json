@@ -1,0 +1,12 @@
+{
+  "name": "eta",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node src/main.ts "
+  },
+  "devDependencies": {
+    "eta": "^4.6.0",
+    "@types/node": "^26.6.4"
+  }
+}

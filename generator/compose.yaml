@@ -1,0 +1,10 @@
+services:
+  app:
+    container_name: app
+    build: .
+    user: 1000:1000
+    working_dir: /home/node/app
+    volumes:
+      - ./app:/home/node/app
+    command: tail -F /dev/null
+    init: true

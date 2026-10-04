@@ -1,0 +1,51 @@
+package com.app.domain.{{=props.singular}};
+
+import java.util.List;
+
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.app.domain.{{=props.singular}}.dto.Create{{= props.pascalSingular }}Request;
+import com.app.domain.{{=props.singular}}.dto.{{= props.pascalSingular }}Response;
+import com.app.domain.{{=props.singular}}.dto.Update{{= props.pascalSingular }}Request;
+import com.app.exception.NotFoundException;
+
+@Service
+@Transactional
+@RequiredArgsConstructor
+public class {{= props.pascalSingular }}Service {
+  private final {{= props.pascalSingular }}Repository {{=props.singular}}Repository;
+
+  private final String RESOURCE_NAME = "{{= props.pascalSingular }}";
+
+  public {{= props.pascalSingular }}Response create(Create{{= props.pascalSingular }}Request request) {
+    {{= props.pascalSingular }}Entity create{{= props.pascalSingular }} = {{= props.pascalSingular }}Entity.create(request);
+    {{= props.pascalSingular }}Entity created{{= props.pascalSingular }} = {{=props.singular}}Repository.save(create{{= props.pascalSingular }});
+    return {{= props.pascalSingular }}Response.from(created{{= props.pascalSingular }});
+  }
+
+  public {{= props.pascalSingular }}Response get(Long id) {
+    {{= props.pascalSingular }}Entity found{{= props.pascalSingular }} = {{=props.singular}}Repository.findById(id)
+        .orElseThrow(() -> new NotFoundException(RESOURCE_NAME, id));
+    return {{= props.pascalSingular }}Response.from(found{{= props.pascalSingular }});
+  }
+
+  public List<{{= props.pascalSingular }}Response> getAll() {
+    return {{=props.singular}}Repository.findAll().stream().map({{= props.pascalSingular }}Response::from).toList();
+  }
+
+  public {{= props.pascalSingular }}Response update(Long id, Update{{= props.pascalSingular }}Request request) {
+    {{= props.pascalSingular }}Entity found{{= props.pascalSingular }} = {{=props.singular}}Repository.findById(id)
+        .orElseThrow(() -> new NotFoundException(RESOURCE_NAME, id));
+    found{{= props.pascalSingular }}.update(request);
+    {{= props.pascalSingular }}Entity updated{{= props.pascalSingular }} = {{=props.singular}}Repository.save(found{{= props.pascalSingular }});
+    return {{= props.pascalSingular }}Response.from(updated{{= props.pascalSingular }});
+  }
+
+  public void delete(Long id) {
+    {{=props.singular}}Repository.findById(id)
+        .orElseThrow(() -> new NotFoundException(RESOURCE_NAME, id));
+    {{=props.singular}}Repository.deleteById(id);
+  }
+}
