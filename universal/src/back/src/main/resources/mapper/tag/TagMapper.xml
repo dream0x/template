@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.app.domain.tag.TagMapper">
+
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+    INSERT INTO tag (name) VALUES (#{name})
+  </insert>
+
+  <select id="findAll" resultType="com.app.domain.tag.TagEntity">
+    SELECT id, name FROM tag ORDER BY id
+  </select>
+
+  <select id="findById" resultType="com.app.domain.tag.TagEntity">
+    SELECT id, name FROM tag WHERE id = #{id}
+  </select>
+
+  <select id="findByTodoId" resultType="com.app.domain.tag.TagEntity">
+    SELECT t.id, t.name
+    FROM tag t
+    JOIN todo_tag tt ON tt.tag_id = t.id
+    WHERE tt.todo_id = #{todoId}
+    ORDER BY t.id
+  </select>
+
+  <select id="countByIds" resultType="int">
+    SELECT COUNT(*) FROM tag WHERE id IN
+    <foreach collection="ids" item="id" open="(" separator="," close=")">
+      #{id}
+    </foreach>
+  </select>
+
+  <update id="update">
+    UPDATE tag SET name = #{name} WHERE id = #{id}
+  </update>
+
+  <delete id="delete">
+    DELETE FROM tag WHERE id = #{id}
+  </delete>
+
+</mapper>

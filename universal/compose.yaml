@@ -20,9 +20,8 @@ services:
     working_dir: /home/node/front
     volumes:
       - ./src/front:/home/node/front
-    command: npx expo start --lan -p 3000
-    # command: tail -F /dev/null
     init: true
+    command: npx expo start --lan -p 3000
 
   back:
     container_name: back
@@ -31,8 +30,8 @@ services:
     working_dir: /home/ubuntu/back
     volumes:
       - ./src/back:/home/ubuntu/back
-    command: tail -F /dev/null
     init: true
+    command: ./gradlew bootRun
     depends_on:
       - db
     environment:

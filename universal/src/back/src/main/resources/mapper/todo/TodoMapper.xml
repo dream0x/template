@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.app.domain.todo.TodoMapper">
+
+  <resultMap id="todoResult" type="com.app.domain.todo.TodoEntity">
+    <id property="id" column="id" />
+    <result property="name" column="name" />
+    <collection property="tags" column="id" ofType="com.app.domain.tag.TagEntity"
+        select="com.app.domain.tag.TagMapper.findByTodoId" />
+  </resultMap>
+
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+    INSERT INTO todo (name) VALUES (#{name})
+  </insert>
+
+  <select id="findAll" resultMap="todoResult">
+    SELECT id, name FROM todo ORDER BY id
+  </select>
+
+  <select id="findById" resultMap="todoResult">
+    SELECT id, name FROM todo WHERE id = #{id}
+  </select>
+
+  <update id="update">
+    UPDATE todo SET name = #{name} WHERE id = #{id}
+  </update>
+
+  <delete id="delete">
+    DELETE FROM todo WHERE id = #{id}
+  </delete>
+
+  <insert id="insertTags">
+    INSERT INTO todo_tag (todo_id, tag_id) VALUES
+    <foreach collection="tagIds" item="tagId" separator=",">
+      (#{todoId}, #{tagId})
+    </foreach>
+  </insert>
+
+  <delete id="deleteTags">
+    DELETE FROM todo_tag WHERE todo_id = #{todoId}
+  </delete>
+
+</mapper>
