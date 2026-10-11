@@ -22,6 +22,7 @@ services:
       - ./src/front:/home/node/front
     init: true
     command: npx expo start --lan -p 3000
+    # docker compose run --rm front bash
 
   back:
     container_name: back
@@ -40,6 +41,7 @@ services:
       - DB_NAME=app
       - DB_USER=postgres
       - DB_PASSWORD=postgres
+    # docker compose run --rm back bash
 
   db:
     container_name: db
