@@ -1,0 +1,33 @@
+services:
+  web:
+    container_name: web
+    build: ./container/web
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    restart: unless-stopped
+    volumes:
+      - ./container/web/conf:/etc/caddy
+      # - ./site:/srv
+      - caddy_data:/data
+      - caddy_config:/config
+
+  front:
+    container_name: front
+    build: ./container/front
+    user: 1000:1000
+    working_dir: /home/node/front
+    volumes:
+      - ./src/front:/home/node/front
+    init: true
+    command: npx expo start --lan -p 3000
+
+volumes:
+  caddy_data:
+  caddy_config:
+
+# docker compose run --rm front bash
+# pkill -f "npx expo start --lan -p 3000"
+# npx eas-cli@latest build --profile preview --platform android
+# npx eas-cli@latest update --branch preview --environment preview --message "説明"

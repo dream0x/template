@@ -55,3 +55,6 @@ services:
 volumes:
   caddy_data:
   caddy_config:
+
+# npx eas-cli@latest build --profile preview --platform android
+# npx eas-cli@latest update --branch preview --environment preview --message "説明"

@@ -1,0 +1,17 @@
+{
+  "name": "front",
+  "dockerComposeFile": "../../compose.yaml",
+  "service": "front",
+  "remoteUser": "node",
+  "workspaceFolder": "/home/node/front",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "biomejs.biome",
+        "dsznajder.es7-react-js-snippets",
+        "msjsdiag.vscode-react-native",
+        "expo.vscode-expo-tools"
+      ]
+    }
+  }
+}

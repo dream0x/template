@@ -1,0 +1,28 @@
+{
+	"cli": {
+		"version": ">= 24.12.1",
+		"appVersionSource": "remote"
+	},
+	"build": {
+		"development": {
+			"distribution": "internal",
+			"developmentClient": true,
+			"channel": "development"
+		},
+		"preview": {
+			"distribution": "internal",
+			"android": {
+				"buildType": "apk"
+			},
+			"channel": "preview"
+		},
+		"production": {
+			"distribution": "store",
+			"autoIncrement": true,
+			"channel": "production"
+		}
+	},
+	"submit": {
+		"production": {}
+	}
+}

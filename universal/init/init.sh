@@ -12,7 +12,7 @@ if [ ! -f "src/front/package.json" ]; then
 
     npx --yes create-expo-app -e with-router .
 
-    npx expo install axios zustand tamagui @tamagui/config/v5 react-hook-form \
+    npx expo install expo-updates axios zustand tamagui @tamagui/config/v5 react-hook-form \
       @tamagui/lucide-icons-2 react-native-svg \
       @tamagui/animations-reanimated react-native-reanimated
   '
