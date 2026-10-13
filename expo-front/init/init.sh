@@ -16,8 +16,7 @@ if [ ! -f "src/front/package.json" ]; then
   '
 
   cp -r init/front/* src/front/
+  rm -rf src/front/.git
 else
   echo "already front project"
 fi
-
-cp -r init/front/* src/front/
