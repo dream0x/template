@@ -1,0 +1,41 @@
+{
+	"expo": {
+		"version": "1.0.0",
+		"name": "expo-app",
+		"slug": "expo-app",
+		"scheme": "expo-app",
+		"icon": "./assets/icon.png",
+		"ios": {
+			"bundleIdentifier": "com.yuio123.expo-app"
+		},
+		"android": {
+			"package": "com.yuio123.expo-app"
+		},
+		"web": {
+			"output": "single",
+			"favicon": "./public/favicon.png"
+		},
+		"userInterfaceStyle": "automatic",
+		"plugins": [
+			"expo-router",
+			[
+				"expo-splash-screen",
+				{
+					"image": "./assets/icon.png"
+				}
+			]
+		],
+		"experiments": {
+			"typedRoutes": true,
+			"reactCompiler": true
+		},
+		"extra": {
+			"eas": {
+				"projectId": ""
+			}
+		},
+		"runtimeVersion": {
+			"policy": "appVersion"
+		}
+	}
+}

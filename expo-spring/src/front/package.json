@@ -1,0 +1,34 @@
+{
+  "name": "front",
+  "version": "1.0.0",
+  "main": "expo-router/entry",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "deploy": "npx expo export -p web && npx eas-cli@latest deploy"
+  },
+  "dependencies": {
+    "@biomejs/biome": "^2.6.4",
+    "@tamagui/animations-reanimated": "^3.1.10",
+    "@tamagui/config": "^3.1.10",
+    "@tamagui/helpers-icon": "^3.1.10",
+    "axios": "^1.21.0",
+    "expo": "^57.0.1",
+    "expo-router": "~57.0.2",
+    "expo-splash-screen": "~57.0.10",
+    "expo-updates": "~57.0.26",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "react-hook-form": "^7.91.0",
+    "react-native": "0.86.0",
+    "react-native-reanimated": "4.5.1",
+    "react-native-svg": "15.15.4",
+    "react-native-web": "^0.21.0",
+    "tamagui": "^3.1.10",
+    "typescript": "~6.0.3",
+    "zustand": "^5.0.16"
+  },
+  "private": true
+}
