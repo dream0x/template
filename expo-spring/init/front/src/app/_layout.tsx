@@ -7,7 +7,7 @@ const config = createTamagui({ ...defaultConfig, animations });
 
 export default function RootLayout() {
 	return (
-		<TamaguiProvider config={config} defaultTheme="light">
+		<TamaguiProvider config={config} defaultTheme="light_level2">
 			<YStack flex={1}>
 				<Stack screenOptions={{ headerShown: false }} />
 			</YStack>
